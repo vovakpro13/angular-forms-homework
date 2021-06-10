@@ -1,12 +1,23 @@
 <form [formGroup]="formGroup" (ngSubmit)="submit()">
+
   <label>User</label>
+
   <select name="" id="" [formControlName]="'userControl'">
     <option></option>
     <option *ngFor="let user of users">{{user.username}}</option>
-  </select>
-  <button type="submit">Submit</button>
+  </select><br>
+
+  <span *ngIf="formGroup.controls.userControl.errors && formGroup.controls.userControl.touched">
+    Please, chose user
+  </span>
+
+  <br>
+
+  <button type="submit" [disabled]="!formGroup.valid">Submit</button>
 </form>
+
 <br>
+
 <div *ngIf="posts">
   <app-post *ngFor="let p of posts" [post]="p"></app-post>
 </div>

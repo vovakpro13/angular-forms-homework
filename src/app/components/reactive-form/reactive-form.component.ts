@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersService} from "../../services/users.service";
 import {IPost, IUser} from "../../models";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PostsService} from "../../services/posts.service";
 
 @Component({
@@ -15,7 +15,7 @@ export class ReactiveFormComponent implements OnInit {
   posts: IPost[];
 
   formGroup = new FormGroup({
-    userControl: new FormControl( '', {})
+    userControl: new FormControl( '', Validators.required)
   });
 
   constructor(private usersService: UsersService, private postsService: PostsService) {
